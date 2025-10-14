@@ -21,3 +21,10 @@ for i in range (0,20):
         massimo=x[i]
         indicemax=y[i]
 print(massimo,indicemax)
+
+minimo=y[0]
+for i in range (0,20):
+    if y[i]<minimo:
+        minimo=y[i]
+        indicemin=x[i]
+print(indicemin,minimo)
