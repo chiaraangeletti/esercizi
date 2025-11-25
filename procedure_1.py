@@ -29,7 +29,9 @@
 #lista2=[2,3,4,5]
 #sommaLista(lista2)
 
-#Scrivere una funzione che data una lista stampi a video il numero degli elementi pari
+#Scrivere una funzione che data una lista stampi a video il numero degli elementi pari.
+#le variabili all'interno della funzione, come ad esempio la variabile somma, esistono
+#solo all'interno della fenzione e non all'esterno.
 
 def numeriPari (lista):
     nPari=0
