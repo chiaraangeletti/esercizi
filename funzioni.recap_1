@@ -1,0 +1,32 @@
+#Scrivere un programma per il calcolo di area
+#di 4 rettangoli avendo base e altezza generati randomicamente.
+
+import random
+
+base_uno=random.randint(1,20)
+altezza_uno=random.randint(1,20)
+
+area_uno=base_uno*altezza_uno
+
+print(area_uno)
+
+base_due=random.randint(1,20)
+altezza_due=random.randint(1,20)
+
+area_due=base_due*altezza_due
+
+print(area_due)
+
+base_tre=random.randint(1,20)
+altezza_tre=random.randint(1,20)
+
+area_tre=base_tre*altezza_tre
+
+print(area_tre)
+
+base_quattro=random.randint(1,20)
+altezza_quattro=random.randint(1,20)
+
+area_quattro=base_quattro*altezza_quattro
+
+print(area_quattro)

@@ -1,0 +1,19 @@
+#Il sottoproblema del calcolo dell'area del rettangolo
+#è costituito da due input (base e altezza) e un solo output (area).
+
+import random
+
+def proceduraCalcoloAreaRettangolo(base,altezza):
+    area=base*altezza
+    print(area)
+
+def funzioneCalcoloAreaRettangolo(base,altezza):
+    area=base*altezza
+    return(area)
+
+if __name__ == '__main__':
+    a = random.randint(1,20)
+    b = random.randint(1,20) #a e b vengono passati per valore quindi come "copia" e non vengono modificati
+    proceduraCalcoloAreaRettangolo(a,b) #chiamata della procedura
+    area=funzioneCalcoloAreaRettangolo(a,b) #chiamata della funzione. La variabile "area" cattura la funzione
+    print(area)
