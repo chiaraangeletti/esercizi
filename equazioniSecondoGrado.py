@@ -1,21 +1,10 @@
 #Scrivere un programma per il calcolo delle soluzioni di un'equazione
 #di secondo grado.
 
-acquisisciCoefficienti()
-if a!=0:
-    calcolaDelta()
-    visualizzaSoluzioni()
-else:
-    risolviEqazPrimoGrado
-    
-def acquisisciCoefficienti():
-    a=input("Inserire il primo coefficiente: ")
-    a=float(a)
-    b=input("Inserire il secondo coefficiente: ")
-    b=float(b)
-    c=input("Inserire il terzo coefficiente: ")
-    c=float(c)
-    
+def acquisisciCoefficienti(a,b,c):
+    if a == 0:
+        print("L'equazione è di primo grado.") 
+
 def calcolaDelta(a,b,c):
     delta=b*b-4*a*c
     print(delta)
@@ -37,4 +26,11 @@ def risolviEquazPrimoGrado(b,c):
     else:
         x=-c/b
 
-
+if __name__ == '__main__':
+    coeffUno=input("Inserire il primo coefficiente: ")
+    coeffUno=float(coeffUno)
+    coeffDue=input("Inserire il secondo coefficiente: ")
+    coeffDue=float(coeffDue)
+    coeffTre=input("Inserire il terzo coefficiente: ")
+    coeffTre=float(coeffTre)
+    
