@@ -24,6 +24,14 @@ def controllo_m(m):
         print("m è nullo")
     else:
         print("m ha segno negativo")
+        
+def incrementoUno(a):
+    a=a+1
+    print(a)
+    
+def incremento_uno_stable(a):
+    a=a+1
+    return(a)
 
 if __name__=="__main__":
     xUno=random.randint(-20,20)
@@ -35,3 +43,5 @@ if __name__=="__main__":
     print(coefficiente_angolare)
     equazione(coefficiente_angolare,xDue,yDue)
     controllo_m(coefficiente_angolare)
+    incrementoUno(xUno) #xUno in questa funzione viene passato per valore quindi viene creata una copia ma xUno non cambia
+    xUno=incremento_uno_stable(xUno) #Sovrascrivo la stessa variabile per cambiare il suo valore nel main.
