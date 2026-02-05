@@ -9,12 +9,12 @@
 
 import random
 
-def calcolo_m(xUno,yUno,xDue,yDue):
-    m=(yDue-yUno)/(xDue-xUno)
+def calcolo_m(tuplaUno,tuplaDue):
+    m=(tuplaDue[1]-tuplaUno[1])/(tuplaDue[0]-tuplaUno[0])
     return(m) #Quando termina la funzione, muoiono tutte le variabili e viene ritornato un valore
 
-def equazione(m,x,y):
-    eq="y-"+str(y)+"="+str(m)+"(x-"+str(x)+")" #Concatenazione di stringje dove c'è una parte fissa e una parte variabile
+def equazione(m,tuplaDue):
+    eq="y-"+str(tuplaDue[1])+"="+str(m)+"(x-"+str(tuplaDue[0])+")" #Concatenazione di stringhe dove c'è una parte fissa e una parte variabile
     print(eq)
     
 def controllo_m(m):
@@ -34,14 +34,12 @@ def incremento_uno_stable(a):
     return(a)
 
 if __name__=="__main__":
-    xUno=random.randint(-20,20)
-    yUno=random.randint(-20,20)
-    xDue=random.randint(-20,20)
-    yDue=random.randint(-20,20)
+    puntoUno=(random.randint(-20,20),random.randint(-20,20))
+    puntoDue=(random.randint(-20,20),random.randint(-20,20))
     
-    coefficiente_angolare=calcolo_m(xUno,yUno,xDue,yDue)
+    coefficiente_angolare=calcolo_m(puntoUno,puntoDue)
     print(coefficiente_angolare)
-    equazione(coefficiente_angolare,xDue,yDue)
+    equazione(coefficiente_angolare,puntoDue)
     controllo_m(coefficiente_angolare)
-    incrementoUno(xUno) #xUno in questa funzione viene passato per valore quindi viene creata una copia ma xUno non cambia
-    xUno=incremento_uno_stable(xUno) #Sovrascrivo la stessa variabile per cambiare il suo valore nel main.
+    #incrementoUno(xUno) #xUno in questa funzione viene passato per valore quindi viene creata una copia ma xUno non cambia
+    #xUno=incremento_uno_stable(xUno) #Sovrascrivo la stessa variabile per cambiare il suo valore nel main.
