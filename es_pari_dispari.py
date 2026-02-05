@@ -27,6 +27,11 @@ def generaListaMentre(lista):
         elemento=random.randint(-10,10)
         lista.append(elemento)
         contatore=contatore+1
+        
+#Funzione che prende una lista e restituisce un dizionario con il numero degli elementi pari e dispari
+        
+def restituisciDizionario(lista):
+    
     
 if __name__=="__main__":
     myList=[]
