@@ -29,8 +29,16 @@ def media(lista):
     mediaElementi=sommaElementi/len(lista)
     return(mediaElementi)
         
+def calcolaSoglia(lista):
+    massimo=0
+    for elemento in lista:
+        if elemento>massimo:
+            massimo=elemento
+    soglia=massimo-10
+    return(soglia)
 
 if __name__=="__main__":
     listaM=[]
     creaLista(listaM)
     mediaValori=media(listaM)
+    sogliaValori=calcolaSoglia(listaM)
