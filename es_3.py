@@ -15,3 +15,6 @@ if __name__ =="__main__":
     classe=[6,7,5,8]
     aggiungi_voto(classe,9)
     print(media_registro(classe, arrotonda_a=1))
+    #Oppure
+    #media_del_registro=media_registro(classe, arrotonda_a=1)
+    #print(media_del_registro)
