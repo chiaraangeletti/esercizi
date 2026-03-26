@@ -1,13 +1,41 @@
+#Analisi delle temperature settimanali.
+#Una stazione meteo ha registrato le temperature (°C) di ogni ora per 7 giorni.
+#Devi calcolare statistiche giornaliere e trovare la giornata più calda e più fredda della settimana.
+#Struttura dati: lista di liste (7 giorni x 24 ore)
+
 import random
 
-somma=0
-mazzo=[1,2,3,4,5,6,7,8,9,10,"J","Q","K"]
-contatore=0
-bj={1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10,"J":10,"Q":10,"K":10}
+def registra_temperature(dizionario):
+    for chiave in dizionario:
+        for i in range(0,24):
+            dizionario[chiave].append(random.randint(-3,20))
+    return(dizionario)
 
-while somma<=21:
-    indice=random.randint(1,13)
-    carta_estratta=mazzo[indice]
-    valore=bj[carta_estratta]
-    somma=somma+valore
-    contatore=contatore+1
+def media_giornaliera(dizionario):
+    media_temp=[]
+    somma=0
+    for chiave,valore in dizionario.items():
+        for elemento in valore:
+            somma=somma+elemento
+        media=somma/len(valore)
+        media=round(media,1)
+        media_temp.append(media)
+    print(media_temp)
+    
+def varianza(dizionario, media_temp):
+    varianza_temp=[]
+    somma=0
+    for chiave,valore in dizionario.items():
+        for elemento in media_temp:
+            somma=somma+((valore-elemento)**2)
+        varianza=somma/len(valore)
+        varianza=round(varianza,1)
+        varianza_temp.append(varianza)
+    print(varianza_temp)
+
+if __name__ =="__main__":
+    temperature={"Lunedì":[],"Martedì":[], "Mercoledì":[], "Giovedì":[], "Venerdì": [], "Sabato": [], "Domenica":[]}
+    registra_temperature(temperature)
+#    print(temperature)
+    media_giornaliera(temperature)
+    varianza(temperature,media_giornaliera)
