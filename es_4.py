@@ -21,7 +21,7 @@ def media_giornaliera(dizionario):
         media=somma/len(valore)
         media=round(media,1)
         media_temp.append(media)
-    #print(media_temp)
+    print("Le medie sono: "+str(media_temp))
     return(media_temp)
 
 def varianza(dizionario,media_temp):
@@ -31,11 +31,11 @@ def varianza(dizionario,media_temp):
         somma=0
         for elemento in valore:
             somma=somma+((elemento-media_temp[giorno])**2)
-        varianza=somma/len(valore)-1
+        varianza=somma/(len(valore)-1)
         varianza=round(varianza,1)
         varianza_temp.append(varianza)
         giorno = giorno +1
-    print(varianza_temp)
+    print("Le varianze sono: "+str(varianza_temp))
     return(varianza_temp)
     
 def giornata_calda_fredda(media_temp):
@@ -51,8 +51,8 @@ def giornata_calda_fredda(media_temp):
         elif media_temp[i]<giornata_fredda:
             gFreddo=i
             giornata_fredda=media_temp[i]
-    print("La giornata più calda è "+giorni[gCaldo]+" con "+str(giornata_calda)+" gradi.")
-    print("La giornata più fredda è "+giorni[gFreddo]+" con "+str(giornata_fredda)+" gradi.")
+    print("La giornata più calda è "+str(giorni[gCaldo])+" con "+str(giornata_calda)+" gradi.")
+    print("La giornata più fredda è "+str(giorni[gFreddo])+" con "+str(giornata_fredda)+" gradi.")
     
 def deviazione_standard(varianza_temp):
     deviazioni=[]
@@ -60,13 +60,37 @@ def deviazione_standard(varianza_temp):
         deviazione=math.sqrt(elemento)
         deviazione=round(deviazione,1)
         deviazioni.append(deviazione)
-    print(deviazioni)
+    print("le deviazioni standard sono: "+str(deviazioni))
+    return(deviazioni)
+
+def moda(dizionario):
+    nModa=0
+    moda=0
+    for chiave,valore in dizionario.items():
+        for elemento in valore:
+            volte=valore.count(elemento)
+            if volte>nModa:
+                nModa=volte
+                moda=elemento
+    print("La moda è "+str(moda)+".")
+                
+def errore_standard(deviazioni):
+    errori=[]
+    nRilevazioni=24
+    radiceRilev=math.sqrt(nRilevazioni)
+    for elemento in deviazioni:
+        errore=elemento/radiceRilev
+        errore=round(errore,1)
+        errori.append(errore)
+    print("Gli errori standard sono: "+str(errori))
+    
 
 if __name__ =="__main__":
     temperature={"Lunedì":[],"Martedì":[], "Mercoledì":[], "Giovedì":[], "Venerdì": [], "Sabato": [], "Domenica":[]}
     registra_temperature(temperature)
     medie = media_giornaliera(temperature)
-    print(medie)
     lVarianze=varianza(temperature,medie)
     giornata_calda_fredda(medie)
-    deviazione_standard(lVarianze)
+    lDeviazioni=deviazione_standard(lVarianze)
+    moda(temperature)
+    errore_standard(lDeviazioni)
