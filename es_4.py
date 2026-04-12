@@ -4,6 +4,7 @@
 #Struttura dati: lista di liste (7 giorni x 24 ore)
 
 import random
+import math
 
 def registra_temperature(dizionario):
     for chiave in dizionario:
@@ -20,22 +21,52 @@ def media_giornaliera(dizionario):
         media=somma/len(valore)
         media=round(media,1)
         media_temp.append(media)
-    print(media_temp)
-    
-def varianza(dizionario, media_temp):
+    #print(media_temp)
+    return(media_temp)
+
+def varianza(dizionario,media_temp):
     varianza_temp=[]
-    somma=0
+    giorno = 0
     for chiave,valore in dizionario.items():
-        for elemento in media_temp:
-            somma=somma+((valore-elemento)**2)
-        varianza=somma/len(valore)
+        somma=0
+        for elemento in valore:
+            somma=somma+((elemento-media_temp[giorno])**2)
+        varianza=somma/len(valore)-1
         varianza=round(varianza,1)
         varianza_temp.append(varianza)
+        giorno = giorno +1
     print(varianza_temp)
+    return(varianza_temp)
+    
+def giornata_calda_fredda(media_temp):
+    giornata_calda=media_temp[0]
+    giornata_fredda=media_temp[0]
+    gClado=0
+    gFreddo=0
+    giorni=["Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato","Domenica"]
+    for i in range(0,len(media_temp)):
+        if media_temp[i]>giornata_calda:
+            gCaldo=i
+            giornata_calda=media_temp[i]
+        elif media_temp[i]<giornata_fredda:
+            gFreddo=i
+            giornata_fredda=media_temp[i]
+    print("La giornata più calda è "+giorni[gCaldo]+" con "+str(giornata_calda)+" gradi.")
+    print("La giornata più fredda è "+giorni[gFreddo]+" con "+str(giornata_fredda)+" gradi.")
+    
+def deviazione_standard(varianza_temp):
+    deviazioni=[]
+    for elemento in varianza_temp:
+        deviazione=math.sqrt(elemento)
+        deviazione=round(deviazione,1)
+        deviazioni.append(deviazione)
+    print(deviazioni)
 
 if __name__ =="__main__":
     temperature={"Lunedì":[],"Martedì":[], "Mercoledì":[], "Giovedì":[], "Venerdì": [], "Sabato": [], "Domenica":[]}
     registra_temperature(temperature)
-#    print(temperature)
-    media_giornaliera(temperature)
-    varianza(temperature,media_giornaliera)
+    medie = media_giornaliera(temperature)
+    print(medie)
+    lVarianze=varianza(temperature,medie)
+    giornata_calda_fredda(medie)
+    deviazione_standard(lVarianze)
