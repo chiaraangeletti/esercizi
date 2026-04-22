@@ -87,7 +87,10 @@ def errore_standard(deviazioni):
     print("Gli errori standard sono: "+str(errori))
     
 def covarianza(dizionario,media_temp):
-    
+    nGiorni=len(media_temp)
+    for chiave,valore in dizionario.items():
+        giornoA=dizionario[chiave]
+        gioenoB=dizionario[chiave+1]
 
 if __name__ =="__main__":
     temperature={"Lunedì":[],"Martedì":[], "Mercoledì":[], "Giovedì":[], "Venerdì": [], "Sabato": [], "Domenica":[]}
