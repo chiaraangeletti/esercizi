@@ -86,11 +86,26 @@ def errore_standard(deviazioni):
         errori.append(errore)
     print("Gli errori standard sono: "+str(errori))
     
-def covarianza(dizionario,media_temp):
-    nGiorni=len(media_temp)
-    for chiave,valore in dizionario.items():
-        giornoA=dizionario[chiave]
-        gioenoB=dizionario[chiave+1]
+def covarianza(dizionario,giornoUno,giornoDue,media_temp):
+    media_x=media_temp[0]
+    media_y=media_temp[1]
+    chiave_x=dizionario[giornoUno]
+    chiave_y=dizionario[giornoDue]
+    n=len(chiave_x)
+    somma_prodotti_scarti=0
+    for i in range(n):
+        scarto_x = chiave_x[i]-media_x
+        scarto_y = chiave_y[i]-media_y
+        somma_prodotti_scarti = somma_prodotti_scarti + (scarto_x * scarto_y)
+    covarianza=somma_prodotti_scarti/(n-1)
+    covarianza=round(covarianza,1)
+    print("La covarianza è: "+str(covarianza))
+    if covarianza<0:
+        print("Al crescere delle temperature del primo giorno, decrescono le temperature del secondo.")
+    else:
+        print("Al crescere delle temperature del primo giorno, crescono anche le temperature del secondo.")
+    return(covarianza)
+    
 
 if __name__ =="__main__":
     temperature={"Lunedì":[],"Martedì":[], "Mercoledì":[], "Giovedì":[], "Venerdì": [], "Sabato": [], "Domenica":[]}
@@ -101,4 +116,10 @@ if __name__ =="__main__":
     lDeviazioni=deviazione_standard(lVarianze)
     moda(temperature)
     errore_standard(lDeviazioni)
-    crea_istogramma(temperature["Lunedì"])
+#    crea_istogramma(temperature["Lunedì"])
+    covarianza_L_M=covarianza(temperature,"Lunedì","Martedì",medie)
+    covarianza_M_M=covarianza(temperature,"Martedì","Mercoledì",medie)
+    covarianza_M_G=covarianza(temperature,"Mercoledì","Giovedì",medie)
+    covarianza_G_V=covarianza(temperature,"Giovedì","Venerdì",medie)
+    covarianza_V_S=covarianza(temperature,"Venerdì","Sabato",medie)
+    covarianza_S_D=covarianza(temperature,"Sabato","Domenica",medie)
